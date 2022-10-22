@@ -907,8 +907,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.08
+  m_Center: {x: -0.05, y: 0, z: -0.1}
 --- !u!114 &151766747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2399,6 +2399,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 420424634, guid: 6c3c0bfa92038bd4aa725e80a43ced1e, type: 3}
+      propertyPath: m_Height
+      value: 0.274171
+      objectReference: {fileID: 0}
+    - target: {fileID: 420424634, guid: 6c3c0bfa92038bd4aa725e80a43ced1e, type: 3}
+      propertyPath: m_Radius
+      value: 0.024420299
+      objectReference: {fileID: 0}
+    - target: {fileID: 420424634, guid: 6c3c0bfa92038bd4aa725e80a43ced1e, type: 3}
+      propertyPath: m_Center.x
+      value: 0.002693601
+      objectReference: {fileID: 0}
+    - target: {fileID: 420424634, guid: 6c3c0bfa92038bd4aa725e80a43ced1e, type: 3}
+      propertyPath: m_Center.y
+      value: -0.045881927
+      objectReference: {fileID: 0}
+    - target: {fileID: 420424634, guid: 6c3c0bfa92038bd4aa725e80a43ced1e, type: 3}
+      propertyPath: m_Center.z
+      value: 0.022359133
+      objectReference: {fileID: 0}
     - target: {fileID: 463045333, guid: 6c3c0bfa92038bd4aa725e80a43ced1e, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -3117,8 +3137,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.08
+  m_Center: {x: 0.05, y: 0, z: -0.1}
 --- !u!114 &1794887557
 MonoBehaviour:
   m_ObjectHideFlags: 0
