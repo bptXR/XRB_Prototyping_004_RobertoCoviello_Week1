@@ -77,7 +77,7 @@ public class Arrow : XRGrabInteractable
 
     private void CheckForHittable(RaycastHit hit)
     {
-        if (hit.transform.TryGetComponent(out IArrowHittable hittable))
+        if (hit.transform.TryGetComponent(out Target hittable))
             hittable.Hit(this);
     }
 

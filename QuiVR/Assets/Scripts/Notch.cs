@@ -6,6 +6,7 @@ public class Notch : XRSocketInteractor
     [SerializeField, Range(0, 1)] private float releaseThreshold = 0.25f;
 
     public Bow Bow { get; private set; }
+
     public PullMeasurer PullMeasurer { get; private set; }
 
     public bool CanRelease => PullMeasurer.PullAmount > releaseThreshold;

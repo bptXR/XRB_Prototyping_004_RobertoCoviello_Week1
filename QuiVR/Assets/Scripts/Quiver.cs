@@ -8,19 +8,17 @@ public class Quiver : XRBaseInteractable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
-        CreateAndSelectArrow(args);
+        GetArrow(args);
     }
 
-    private void CreateAndSelectArrow(SelectEnterEventArgs args)
+    private void GetArrow(SelectEnterEventArgs args)
     {
-        // Create arrow, force into interacting hand
-        Arrow arrow = CreateArrow(args.interactorObject.transform);
+        Arrow arrow = SpawnArrow(args.interactorObject.transform);
         interactionManager.SelectEnter(args.interactorObject, arrow);
     }
 
-    private Arrow CreateArrow(Transform orientation)
+    private Arrow SpawnArrow(Transform orientation)
     {
-        // Create arrow, and get arrow component
         GameObject arrowObject = Instantiate(arrowPrefab, orientation.position, orientation.rotation);
         return arrowObject.GetComponent<Arrow>();
     }

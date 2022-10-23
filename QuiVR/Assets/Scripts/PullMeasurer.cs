@@ -20,20 +20,14 @@ public class PullMeasurer : XRBaseInteractable
     {
         base.ProcessInteractable(updatePhase);
 
-        if (isSelected)
-        {
-            // Update pull values while the measurer is grabbed
-            if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
-                UpdatePull();
-        }
+        if (!isSelected) return;
+        if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
+            GetInteractorPosition();
     }
 
-    private void UpdatePull()
+    private void GetInteractorPosition()
     {
-        // Use the interactor's position to calculate amount
         Vector3 interactorPosition = firstInteractorSelecting.transform.position;
-
-        // Figure out the new pull value, and it's position in space
         PullAmount = CalculatePull(interactorPosition);
     }
 
@@ -54,8 +48,6 @@ public class PullMeasurer : XRBaseInteractable
 
     private void OnDrawGizmos()
     {
-        // Draw line from start to end point
-        if (start && end)
-            Gizmos.DrawLine(start.position, end.position);
+        Gizmos.DrawLine(start.position, end.position);
     }
 }

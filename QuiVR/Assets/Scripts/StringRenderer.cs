@@ -3,16 +3,17 @@
 [ExecuteInEditMode]
 public class StringRenderer : MonoBehaviour
 {
-    [Header("Render Positions")]
-    [SerializeField] private Transform start;
+    [Header("Render Positions")] [SerializeField]
+    private Transform start;
+
     [SerializeField] private Transform middle;
     [SerializeField] private Transform end;
 
-    private LineRenderer lineRenderer;
+    private LineRenderer _lineRenderer;
 
     private void Awake()
     {
-        lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer = GetComponent<LineRenderer>();
     }
 
     private void Update()
@@ -35,6 +36,6 @@ public class StringRenderer : MonoBehaviour
     private void UpdatePositions()
     {
         // Set positions of line renderer, middle position is the notch attach transform
-        lineRenderer.SetPositions(new Vector3[] { start.position, middle.position, end.position });
+        _lineRenderer.SetPositions(new Vector3[] { start.position, middle.position, end.position });
     }
 }

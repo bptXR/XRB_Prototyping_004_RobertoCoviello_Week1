@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Target : MonoBehaviour, IArrowHittable
+public class Target : MonoBehaviour
 {
     public float forceAmount = 1.0f;
     public Material otherMaterial = null;
