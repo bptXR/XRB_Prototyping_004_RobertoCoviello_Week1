@@ -52,7 +52,7 @@ namespace BowArrow
 
             // Once the arrow has stopped flying
             DisablePhysics();
-            ChildArrow(_hit);
+            ChildArrowToTarget(_hit);
             CheckForHittable(_hit);
         }
 
@@ -79,10 +79,7 @@ namespace BowArrow
             _rigidbody.useGravity = false;
         }
 
-        private void ChildArrow(RaycastHit hit)
-        {
-            transform.SetParent(hit.transform);
-        }
+        private void ChildArrowToTarget(RaycastHit hit) => transform.SetParent(hit.transform);
 
         private void CheckForHittable(RaycastHit hit)
         {

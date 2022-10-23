@@ -8,7 +8,9 @@ namespace BowArrow
         [SerializeField, Range(0, 1)] private float releaseThreshold = 0.25f;
 
         private Bow _bow;
+
         public PullMeasurer PullMeasurer { get; private set; }
+
         public bool CanRelease => PullMeasurer.PullAmount > releaseThreshold;
 
         protected override void Awake()
@@ -32,8 +34,8 @@ namespace BowArrow
 
         private void ReleaseArrow(SelectExitEventArgs args)
         {
-            if (hasSelection)
-                interactionManager.SelectExit(this, firstInteractableSelected);
+            if (!hasSelection) return;
+            interactionManager.SelectExit(this, firstInteractableSelected);
         }
 
         public override void ProcessInteractor(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -41,34 +43,12 @@ namespace BowArrow
             base.ProcessInteractor(updatePhase);
 
             if (_bow.isSelected)
-                UpdateAttach();
+                UpdatePull();
         }
 
-        private void UpdateAttach()
+        private void UpdatePull()
         {
-            // Move attach when bow is pulled, this updates the renderer as well
             attachTransform.position = PullMeasurer.PullPosition;
-        }
-
-        public override bool CanSelect(IXRSelectInteractable interactable)
-        {
-            // We check for the hover here too, since it factors in the recycle time of the socket
-            // We also check that notch is ready, which is set once the bow is picked up
-            return QuickSelect(interactable) && CanHover(interactable) && interactable is Arrow && _bow.isSelected;
-        }
-
-        private bool QuickSelect(IXRSelectInteractable interactable)
-        {
-            // This lets the Notch automatically grab the arrow
-            return !hasSelection || IsSelecting(interactable);
-        }
-
-        private bool CanHover(IXRSelectInteractable interactable)
-        {
-            if (interactable is IXRHoverInteractable hoverInteractable)
-                return CanHover(hoverInteractable);
-
-            return false;
         }
     }
 }
