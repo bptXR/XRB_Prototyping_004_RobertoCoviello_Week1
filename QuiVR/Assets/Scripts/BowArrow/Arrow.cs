@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DG.Tweening;
 using Enemies;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -11,6 +12,7 @@ namespace BowArrow
         [SerializeField] private float speed = 2000.0f;
         [SerializeField] private Transform tip;
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] private MeshRenderer meshRenderer;
         public int damage = 50;
         public int damageToEnemy;
 
@@ -64,6 +66,7 @@ namespace BowArrow
             DisablePhysics();
             ChildArrowToTarget(_hit);
             CheckForHittable(_hit);
+            DestroyArrow();
         }
 
         private bool CheckForCollision(out RaycastHit hit)
@@ -87,6 +90,11 @@ namespace BowArrow
         {
             _rigidbody.isKinematic = true;
             _rigidbody.useGravity = false;
+        }
+
+        private void DestroyArrow()
+        {
+            meshRenderer.material.DOFade(0, 6).OnComplete(() => Destroy(gameObject));
         }
 
         private void ChildArrowToTarget(RaycastHit hit) => transform.SetParent(hit.transform);
