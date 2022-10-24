@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -12,11 +10,13 @@ namespace Enemies
         private NavMeshAgent _enemy;
         private Transform _playerTransform;
         private Animator _anim;
-        
+        private bool _isAttacking;
+
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
         private static readonly int Die = Animator.StringToHash("Die");
         private static readonly int DieIndex = Animator.StringToHash("DieIndex");
+        private static readonly int Walk = Animator.StringToHash("Walk");
 
         private void Awake()
         {
@@ -26,20 +26,28 @@ namespace Enemies
             _anim = GetComponent<Animator>();
         }
 
-        IEnumerator Start()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(2);
-
-                _anim.SetInteger(AttackIndex, Random.Range(0, 7));
-                _anim.SetTrigger(Attack);
-            }
-        }
-
         private void Update()
         {
             _enemy.SetDestination(_playerTransform.position);
+
+            if (!_isAttacking) return;
+            _anim.SetInteger(AttackIndex, Random.Range(0, 7));
+            _anim.SetTrigger(Attack);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
+            _enemy.isStopped = true;
+            _isAttacking = true;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
+            _enemy.isStopped = false;
+            _isAttacking = false;
+            _anim.SetTrigger(Attack);
         }
     }
 }
