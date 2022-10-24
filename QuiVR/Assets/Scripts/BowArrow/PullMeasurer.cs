@@ -7,6 +7,7 @@ namespace BowArrow
     {
         [SerializeField] private Transform start;
         [SerializeField] private Transform end;
+        [SerializeField] private Material glowMaterial;
 
         public float PullAmount { get; private set; } = 0.0f;
         public float lastPullAmount;
@@ -18,6 +19,7 @@ namespace BowArrow
             base.OnSelectExited(args);
             lastPullAmount = PullAmount;
             PullAmount = 0;
+            glowMaterial.SetFloat("_EmissionIntensity", 0);
         }
 
         public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -25,8 +27,10 @@ namespace BowArrow
             base.ProcessInteractable(updatePhase);
 
             if (!isSelected) return;
-            if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
-                GetPullAmount();
+            
+            if (updatePhase != XRInteractionUpdateOrder.UpdatePhase.Dynamic) return;
+            GetPullAmount();
+            glowMaterial.SetFloat("_EmissionIntensity", (PullAmount*5));
         }
 
         private void GetPullAmount()
