@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using Enemies;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Enemies;
 
 namespace BowArrow
 {
@@ -9,6 +11,8 @@ namespace BowArrow
         [SerializeField] private float speed = 2000.0f;
         [SerializeField] private Transform tip;
         [SerializeField] private LayerMask layerMask;
+        
+        public int Damage { get; private set; } = 50;
 
         private bool _isFlying;
         private Vector3 _lastPosition = Vector3.zero;
@@ -43,14 +47,12 @@ namespace BowArrow
 
         private IEnumerator LaunchRoutine()
         {
-            // Set direction while flying
             while (!CheckForCollision(out _hit))
             {
                 SetDirection();
                 yield return null;
             }
 
-            // Once the arrow has stopped flying
             DisablePhysics();
             ChildArrowToTarget(_hit);
             CheckForHittable(_hit);
@@ -83,7 +85,7 @@ namespace BowArrow
 
         private void CheckForHittable(RaycastHit hit)
         {
-            if (hit.transform.TryGetComponent(out Target hittable))
+            if (hit.transform.TryGetComponent(out Enemy hittable))
                 hittable.Hit(this);
         }
 
