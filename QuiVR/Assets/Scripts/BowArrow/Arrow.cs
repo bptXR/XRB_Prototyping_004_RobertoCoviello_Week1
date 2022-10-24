@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Enemies;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using Enemies;
 
 namespace BowArrow
 {
@@ -11,18 +11,24 @@ namespace BowArrow
         [SerializeField] private float speed = 2000.0f;
         [SerializeField] private Transform tip;
         [SerializeField] private LayerMask layerMask;
-        
-        public int Damage { get; private set; } = 50;
+        public int damage = 50;
+        public int damageToEnemy;
 
         private bool _isFlying;
         private Vector3 _lastPosition = Vector3.zero;
         private Rigidbody _rigidbody;
         private RaycastHit _hit;
+        private PullMeasurer _pullMeasurer;
 
         protected override void Awake()
         {
             base.Awake();
             _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        private void Start()
+        {
+            _pullMeasurer = FindObjectOfType<PullMeasurer>();
         }
 
         protected override void OnSelectExited(SelectExitEventArgs args)
@@ -52,6 +58,8 @@ namespace BowArrow
                 SetDirection();
                 yield return null;
             }
+
+            damageToEnemy = Mathf.RoundToInt(damage * _pullMeasurer.lastPullAmount);
 
             DisablePhysics();
             ChildArrowToTarget(_hit);

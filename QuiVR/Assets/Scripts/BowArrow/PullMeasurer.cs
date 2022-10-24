@@ -9,12 +9,14 @@ namespace BowArrow
         [SerializeField] private Transform end;
 
         public float PullAmount { get; private set; } = 0.0f;
+        public float lastPullAmount;
 
         public Vector3 PullPosition => Vector3.Lerp(start.position, end.position, PullAmount);
 
         protected override void OnSelectExited(SelectExitEventArgs args)
         {
             base.OnSelectExited(args);
+            lastPullAmount = PullAmount;
             PullAmount = 0;
         }
 

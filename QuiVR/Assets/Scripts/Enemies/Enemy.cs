@@ -16,9 +16,7 @@ namespace Enemies
         private Transform _playerTransform;
         private Animator _anim;
         private bool _isAttacking;
-        private float _damagePoints;
         private int _damage;
-        private PullMeasurer _pullMeasurer;
         
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
@@ -38,7 +36,6 @@ namespace Enemies
         {
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
-            _pullMeasurer = FindObjectOfType<PullMeasurer>();
         }
 
         private void Update()
@@ -67,7 +64,6 @@ namespace Enemies
 
         public void Hit(Arrow arrow)
         {
-            Debug.Log("Enemy hit");
             DisableCollider(arrow);
             TakeDamage(arrow);
             KillEnemy();
@@ -81,11 +77,16 @@ namespace Enemies
 
         private void TakeDamage(Arrow arrow)
         {
-            _damagePoints = _pullMeasurer.PullAmount;
-            _damage = Mathf.RoundToInt(_damagePoints * arrow.Damage);
+            _damage = arrow.damageToEnemy;
             
+            print(_damage);
             currentHealth -= _damage;
             healthBar.SetHealth(currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                KillEnemy();
+            }
         }
         
         private void KillEnemy()
