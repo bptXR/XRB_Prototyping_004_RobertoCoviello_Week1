@@ -99,8 +99,8 @@ namespace Enemies
 
         public void DoDamage()
         {
+            if (!_isAttacking) return;
             int currentPlayerHealth = _player.currentHealth - damageToPlayer;
-                
             _player.TakeDamage(currentPlayerHealth);
         }
     }
