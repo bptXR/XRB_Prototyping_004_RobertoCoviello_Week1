@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 320107371}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 463045334}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 1137606935514613497}
   - component: {fileID: 1137606935514613499}
   - component: {fileID: 1137606935514613498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Notch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 4294967295
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 1829499459514159683}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_StartingTargetFilter: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1137606935890080577}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,14 +187,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137606935890080576}
-  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalRotation: {x: -0.22989008, y: 0.025108587, z: 0.069283284, w: 0.97042257}
+  m_LocalPosition: {x: 0.0353, y: 0.0147, z: 0.1088}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5854033015894534605}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -26.722, y: 1.083, z: 7.91}
 --- !u!1 &1827577940238674798
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1829499459514159683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 705318187586076703}
   - component: {fileID: 420424634}
   - component: {fileID: 420424635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,10 +399,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.05
-  m_Height: 0.4
+  m_Radius: 0.018068977
+  m_Height: 0.274171
   m_Direction: 1
-  m_Center: {x: 0, y: -0.025, z: 0}
+  m_Center: {x: 0.002693601, y: -0.045881927, z: 0.028710455}
 --- !u!54 &420424635
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 5999162397017812925}
   - component: {fileID: 3416925286724269781}
   - component: {fileID: 1915222673732569581}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: String
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2af87b258d62c284ca42aa111dadb298, type: 2}
+  - {fileID: 2100000, guid: e928490e44258d748a9a3c9cb9dc83e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -580,7 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 148824367130025685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 2143200573330859535}
   - component: {fileID: 2851339653200483893}
   - component: {fileID: 6142289673397325642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Measurer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,6 +720,8 @@ MonoBehaviour:
       m_Calls: []
   start: {fileID: 320107371}
   end: {fileID: 463045334}
+  glowMaterial: {fileID: 2100000, guid: e928490e44258d748a9a3c9cb9dc83e7, type: 2}
+  lastPullAmount: 0
 --- !u!65 &6142289673397325642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -744,7 +746,7 @@ GameObject:
   - component: {fileID: 8808615383044413353}
   - component: {fileID: 7531497415810371574}
   - component: {fileID: 7531497415810371575}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +788,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2af87b258d62c284ca42aa111dadb298, type: 2}
+  - {fileID: 2100000, guid: 002db72054162e04b917e86a395e0a0f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -825,7 +827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3534040952220078169}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
