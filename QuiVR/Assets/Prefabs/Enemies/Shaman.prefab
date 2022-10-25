@@ -1789,7 +1789,6 @@ Transform:
   - {fileID: 5597811050918936386}
   - {fileID: 5597790675041808076}
   - {fileID: 5598311807491034654}
-  - {fileID: 7244887177568161990}
   m_Father: {fileID: 5598008934336120914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 13.172635, y: 19.449303, z: -5.845896}
@@ -3777,7 +3776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5597765022991434706
 Transform:
   m_ObjectHideFlags: 0
@@ -5518,71 +5517,4 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 435488, guid: cf3a5c2462d00ed4c9ee956b9a48e0b8,
     type: 3}
   m_PrefabInstance: {fileID: 7244887177507869527}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7244887177568269088
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 5598020989507120538}
-    m_Modifications:
-    - target: {fileID: 107784, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_Name
-      value: SM_Wep_Shield_Chitin_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.009
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.046
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.023
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.73255706
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.6800317
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.012562411
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.027554268
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -85.573
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 14.303
-      objectReference: {fileID: 0}
-    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -17.557
-      objectReference: {fileID: 0}
-    - target: {fileID: 3316996, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: b5196e5ddc1ba8048a3717e119b55b9f, type: 3}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
---- !u!4 &7244887177568161990 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 7244887177568269088}
   m_PrefabAsset: {fileID: 0}
