@@ -17,6 +17,11 @@ namespace Enemies
         public int cost;
         public Enemy enemyPrefab;
 
+        [SerializeField] private AudioClip[] attackSounds;
+        [SerializeField] private AudioClip[] gettingHitSounds;
+        [SerializeField] private AudioClip[] spawnSounds;
+        [SerializeField] private AudioClip walkingSound;
+
         private Player _player;
         private NavMeshAgent _enemy;
         private Transform _playerTransform;
@@ -48,10 +53,6 @@ namespace Enemies
         private void Update()
         {
             _enemy.SetDestination(_playerTransform.position);
-
-            if (!_isAttacking) return;
-            _anim.SetInteger(AttackIndex, Random.Range(0, 7));
-            _anim.SetTrigger(Attack);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -59,6 +60,8 @@ namespace Enemies
             if (!other.CompareTag("Player")) return;
             _enemy.isStopped = true;
             _isAttacking = true;
+            _anim.SetInteger(AttackIndex, Random.Range(0, 7));
+            _anim.SetTrigger(Attack);
         }
 
         private void OnTriggerExit(Collider other)
@@ -93,9 +96,9 @@ namespace Enemies
 
         private void KillEnemy()
         {
+            _enemy.isStopped = true;
             _anim.SetInteger(DieIndex, Random.Range(0, 7));
             _anim.SetTrigger(Die);
-            _enemy.isStopped = true;
 
             meshRenderer.materials[0].DOFade(0, 5).SetDelay(1).OnComplete(() => Destroy(gameObject));
         }
