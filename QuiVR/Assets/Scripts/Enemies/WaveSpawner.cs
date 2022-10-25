@@ -8,7 +8,7 @@ namespace Enemies
     {
         [SerializeField] private List<Enemy> enemies = new();
         [SerializeField] private int currWave;
-        [SerializeField] private int waveDuration;
+        [SerializeField] private int waveDuration = 30;
         [SerializeField] private Transform[] spawnLocations;
         [SerializeField] private int spawnIndex;
         [SerializeField] private int spendAmount;

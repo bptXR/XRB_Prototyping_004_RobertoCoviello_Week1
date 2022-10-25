@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 using BowArrow;
@@ -14,7 +13,6 @@ namespace Enemies
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private SkinnedMeshRenderer meshRenderer;
         [SerializeField] private int damageToPlayer = 20;
-        [SerializeField] private CapsuleCollider capsuleCollider;
 
         public int cost;
         public Enemy enemyPrefab;
@@ -26,12 +24,13 @@ namespace Enemies
         [SerializeField] private AudioClip walkingSound;
 
         private Player _player;
-        private NavMeshAgent _enemyNavMesh;
+        private NavMeshAgent _enemy;
         private Transform _playerTransform;
         private Animator _anim;
+
+        private bool _isDead;
         private bool _isAttacking;
         private bool _isWalking = true;
-        private bool _isDead;
         private int _damageToEnemy;
 
         private static readonly int Attack = Animator.StringToHash("Attack");
@@ -42,7 +41,7 @@ namespace Enemies
 
         private void Awake()
         {
-            _enemyNavMesh = GetComponent<NavMeshAgent>();
+            _enemy = GetComponent<NavMeshAgent>();
             _player = FindObjectOfType<Player>();
             _playerTransform = _player.transform;
             _anim = GetComponent<Animator>();
@@ -52,18 +51,19 @@ namespace Enemies
         {
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
-            _enemyNavMesh.speed = Random.Range(1.5f, 2.8f);
+            _enemy.speed = Random.Range(1.5f, 2.8f);
         }
 
         private void Update()
         {
-            _enemyNavMesh.SetDestination(_playerTransform.position);
+            if (!_isDead)
+                _enemy.SetDestination(_playerTransform.position);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Player") || _isDead) return;
-            _enemyNavMesh.isStopped = true;
+            _enemy.isStopped = true;
             _isWalking = false;
             _isAttacking = true;
             _anim.SetInteger(AttackIndex, Random.Range(0, 7));
@@ -73,7 +73,7 @@ namespace Enemies
         private void OnTriggerExit(Collider other)
         {
             if (!other.CompareTag("Player") || _isDead) return;
-            _enemyNavMesh.isStopped = false;
+            _enemy.isStopped = false;
             _isWalking = true;
             _isAttacking = false;
             _anim.SetTrigger(Walk);
@@ -82,13 +82,15 @@ namespace Enemies
         public void Hit(Arrow arrow)
         {
             DisableCollider(arrow);
-            if (_isDead) return;
-            TakeDamage(arrow);
+
+            if (!_isDead)
+                TakeDamage(arrow);
         }
 
         private void DisableCollider(Arrow arrow)
         {
-            Destroy(arrow.capsuleCollider);
+            if (arrow.TryGetComponent(out Collider collider))
+                collider.enabled = false;
         }
 
         private void TakeDamage(Arrow arrow)
@@ -109,15 +111,17 @@ namespace Enemies
 
         private void KillEnemy()
         {
-            Destroy(capsuleCollider);
-            _enemyNavMesh.isStopped = true;
+            _isDead = true;
+            _enemy.isStopped = true;
             _anim.SetInteger(DieIndex, Random.Range(0, 7));
             _anim.SetTrigger(Die);
-            
+
             Sounds(dieSounds);
 
             meshRenderer.materials[0].DOFade(0, 5).OnComplete(() => Destroy(gameObject));
-            Destroy(_enemyNavMesh);
+            // Destroy(this.GetComponent<Rigidbody>());
+            Destroy(_enemy);
+            //   Destroy(this.GetComponent<c>());
         }
 
         private void OnDestroy()
@@ -126,17 +130,17 @@ namespace Enemies
             GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>().spawnedEnemies
                 .Remove(enemyPrefab);
         }
-        
+
         private void Sounds(AudioClip[] clips)
         {
             AudioClip clip = clips[Random.Range(0, clips.Length)];
             audioSource.PlayOneShot(clip);
         }
-        
+
         public void DoDamage()
         {
             Sounds(attackSounds);
-            
+
             if (!_isAttacking) return;
             int currentPlayerHealth = _player.currentHealth - damageToPlayer;
             _player.TakeDamage(currentPlayerHealth);
