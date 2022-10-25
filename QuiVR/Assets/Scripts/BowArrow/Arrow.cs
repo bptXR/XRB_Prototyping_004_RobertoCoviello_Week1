@@ -107,11 +107,11 @@ namespace BowArrow
             if (hit.transform.TryGetComponent(out Enemy hittable))
             {
                 hittable.Hit(this);
-                HitEnemySounds();
+                Sounds(hitEnemySounds);
             }
             else
             {
-                HitGroundSounds();
+                Sounds(hitGroundSounds);
             }
         }
 
@@ -120,15 +120,9 @@ namespace BowArrow
             return base.IsSelectableBy(interactor) && !_isFlying;
         }
 
-        private void HitEnemySounds()
+        private void Sounds(AudioClip[] clips)
         {
-            AudioClip clip = hitEnemySounds[Random.Range(0, hitEnemySounds.Length)];
-            audioSource.PlayOneShot(clip);
-        }
-
-        private void HitGroundSounds()
-        {
-            AudioClip clip = hitGroundSounds[Random.Range(0, hitGroundSounds.Length)];
+            AudioClip clip = clips[Random.Range(0, clips.Length)];
             audioSource.PlayOneShot(clip);
         }
     }

@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Sounds();
+            Sounds(getHitSounds);
         }
     }
 
@@ -38,9 +38,9 @@ public class Player : MonoBehaviour
         print("Game Over");
     }
 
-    private void Sounds()
+    private void Sounds(AudioClip[] clips)
     {
-        AudioClip clip = getHitSounds[Random.Range(0, getHitSounds.Length)];
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
         audioSource.PlayOneShot(clip);
     }
 }

@@ -20,7 +20,6 @@ namespace Enemies
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip[] attackSounds;
         [SerializeField] private AudioClip[] gettingHitSounds;
-        [SerializeField] private AudioClip[] spawnSounds;
         [SerializeField] private AudioClip[] dieSounds;
         [SerializeField] private AudioClip walkingSound;
 
@@ -29,7 +28,7 @@ namespace Enemies
         private Transform _playerTransform;
         private Animator _anim;
         private bool _isAttacking;
-        private bool _isWalking;
+        private bool _isWalking = true;
         private int _damageToEnemy;
 
         private static readonly int Attack = Animator.StringToHash("Attack");
@@ -95,8 +94,14 @@ namespace Enemies
             currentHealth -= _damageToEnemy;
             healthBar.SetHealth(currentHealth);
 
-            if (currentHealth > 0) return;
-            KillEnemy();
+            if (currentHealth <= 0)
+            {
+                KillEnemy();
+            }
+            else
+            {
+                Sounds(gettingHitSounds);
+            }
         }
 
         private void KillEnemy()
@@ -104,17 +109,10 @@ namespace Enemies
             _enemy.isStopped = true;
             _anim.SetInteger(DieIndex, Random.Range(0, 7));
             _anim.SetTrigger(Die);
+            
+            Sounds(dieSounds);
 
             meshRenderer.materials[0].DOFade(0, 5).SetDelay(1).OnComplete(() => Destroy(gameObject));
-        }
-
-        public void DoDamage()
-        {
-            AttackSounds();
-            
-            if (!_isAttacking) return;
-            int currentPlayerHealth = _player.currentHealth - damageToPlayer;
-            _player.TakeDamage(currentPlayerHealth);
         }
 
         private void OnDestroy()
@@ -124,10 +122,24 @@ namespace Enemies
                 .Remove(enemyPrefab);
         }
         
-        private void AttackSounds()
+        private void Sounds(AudioClip[] clips)
         {
-            AudioClip clip = attackSounds[Random.Range(0, attackSounds.Length)];
+            AudioClip clip = clips[Random.Range(0, clips.Length)];
             audioSource.PlayOneShot(clip);
+        }
+        
+        public void DoDamage()
+        {
+            Sounds(attackSounds);
+            
+            if (!_isAttacking) return;
+            int currentPlayerHealth = _player.currentHealth - damageToPlayer;
+            _player.TakeDamage(currentPlayerHealth);
+        }
+
+        public void FootStep()
+        {
+            audioSource.PlayOneShot(walkingSound);
         }
     }
 }

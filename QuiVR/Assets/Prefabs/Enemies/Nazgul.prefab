@@ -3846,12 +3846,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4928872aacfd63348a2ca935c42a3fd6, type: 3}
   - {fileID: 8300000, guid: e5b957c1df028f141a5bb1f58e8a8cf8, type: 3}
   - {fileID: 8300000, guid: 8ddc83c12b469a24aaaf13f0828c4f8e, type: 3}
-  spawnSounds:
-  - {fileID: 8300000, guid: d70f65e5f66fbaf4aabcec7065dec7fa, type: 3}
-  - {fileID: 8300000, guid: 1cb1b27d5a4938949ae413229df839d6, type: 3}
-  - {fileID: 8300000, guid: 60d70538a99fabf448c57ff339dcf3dd, type: 3}
-  - {fileID: 8300000, guid: 4b02d38aafc1a6a4cabe833a0ab6a60c, type: 3}
-  - {fileID: 8300000, guid: bb272ef19d82c9f40a053cc11934b9bb, type: 3}
   dieSounds:
   - {fileID: 8300000, guid: 20dae5237aef75440b2776f135b6aaf9, type: 3}
   - {fileID: 8300000, guid: e0135a787239bd34da729978f4bafcec, type: 3}
@@ -5238,7 +5232,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5247,7 +5241,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 6
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

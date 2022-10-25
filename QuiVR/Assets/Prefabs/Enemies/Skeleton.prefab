@@ -964,15 +964,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d3b7c871df943ed42ac97f150393714d, type: 3}
   - {fileID: 8300000, guid: 55853d988e97819449d3b9404a978562, type: 3}
   - {fileID: 8300000, guid: 9a3b03f04eb8047418ea6403ce6a3163, type: 3}
-  spawnSounds:
-  - {fileID: 8300000, guid: 27334faefb0cd7f4aaf0590535e24f7e, type: 3}
-  - {fileID: 8300000, guid: 2d2a23b1d75bd79478d1feecf6257b7b, type: 3}
-  - {fileID: 8300000, guid: bb534801ed5b9d14d849af369587d712, type: 3}
-  - {fileID: 8300000, guid: 1655fe332c0924a418181e2c2902fa7b, type: 3}
-  - {fileID: 8300000, guid: c7642d95f49b36746bcfc325f8164838, type: 3}
-  - {fileID: 8300000, guid: 4e9a4da22e9184f42b28ad49464f6c35, type: 3}
-  - {fileID: 8300000, guid: 83e8252b8f3ff6d4d8bb550c28d3bc74, type: 3}
-  - {fileID: 8300000, guid: 0da9090fe6a130d468c2dfa968042e0b, type: 3}
   dieSounds:
   - {fileID: 8300000, guid: b61f1020659c36946b7a8ceb8df19358, type: 3}
   - {fileID: 8300000, guid: 5737e8308750b0543b9ad1b2906f0a1a, type: 3}
@@ -5018,7 +5009,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5027,7 +5018,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 6
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
