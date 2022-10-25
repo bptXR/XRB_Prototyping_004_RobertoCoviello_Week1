@@ -13,6 +13,9 @@ namespace Enemies
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private SkinnedMeshRenderer meshRenderer;
         [SerializeField] private int damageToPlayer = 20;
+        
+        public int cost;
+        public Enemy enemyPrefab;
 
         private Player _player;
         private NavMeshAgent _enemy;
@@ -102,6 +105,13 @@ namespace Enemies
             if (!_isAttacking) return;
             int currentPlayerHealth = _player.currentHealth - damageToPlayer;
             _player.TakeDamage(currentPlayerHealth);
+        }
+
+        private void OnDestroy()
+        {
+            if (GameObject.FindGameObjectWithTag("WaveSpawner") == null) return;
+            GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>().spawnedEnemies
+                .Remove(this);
         }
     }
 }

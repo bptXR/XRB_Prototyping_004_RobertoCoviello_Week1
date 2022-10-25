@@ -983,6 +983,8 @@ MonoBehaviour:
   healthBar: {fileID: 256300976021188669}
   meshRenderer: {fileID: 2502262747999523421}
   damageToPlayer: 40
+  cost: 8
+  enemyPrefab: {fileID: 2450931036535425998}
 --- !u!95 &2450931036535426003
 Animator:
   serializedVersion: 4
