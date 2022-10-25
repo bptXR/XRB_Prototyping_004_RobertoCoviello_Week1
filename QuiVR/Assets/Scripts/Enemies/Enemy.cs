@@ -93,9 +93,9 @@ namespace Enemies
 
         private void KillEnemy()
         {
-            //_enemy.isStopped = true;
             _anim.SetInteger(DieIndex, Random.Range(0, 7));
             _anim.SetTrigger(Die);
+            _enemy.isStopped = true;
 
             meshRenderer.materials[0].DOFade(0, 5).SetDelay(1).OnComplete(() => Destroy(gameObject));
         }
