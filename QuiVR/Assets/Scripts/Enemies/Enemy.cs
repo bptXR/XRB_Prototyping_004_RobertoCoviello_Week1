@@ -112,7 +112,7 @@ namespace Enemies
             
             Sounds(dieSounds);
 
-            meshRenderer.materials[0].DOFade(0, 5).SetDelay(1).OnComplete(() => Destroy(gameObject));
+            meshRenderer.materials[0].DOFade(0, 5).OnComplete(() => Destroy(gameObject));
         }
 
         private void OnDestroy()

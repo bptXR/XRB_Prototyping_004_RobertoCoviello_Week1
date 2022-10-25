@@ -941,7 +941,7 @@ MonoBehaviour:
   maxHealth: 30
   currentHealth: 0
   healthBar: {fileID: 8684261750885697820}
-  meshRenderer: {fileID: 6463774709777279868}
+  meshRenderer: {fileID: 6463369579678021712}
   damageToPlayer: 5
   cost: 1
   enemyPrefab: {fileID: 6415754418904724207}
@@ -5009,7 +5009,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5018,7 +5018,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 8
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
