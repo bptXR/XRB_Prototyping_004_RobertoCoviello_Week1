@@ -1575,7 +1575,7 @@ MonoBehaviour:
   - {fileID: 6415754418904724207, guid: 2cbaa2493e47bf34c88c8eaeb4efceac, type: 3}
   - {fileID: 2450931036535425998, guid: 62c34b328c411ca4ca304c7bf851f939, type: 3}
   currWave: 0
-  waveDuration: 0
+  waveDuration: 30
   spawnLocations:
   - {fileID: 1069929446}
   - {fileID: 1977970780}
