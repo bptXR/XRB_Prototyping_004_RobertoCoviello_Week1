@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 using BowArrow;
@@ -13,6 +14,7 @@ namespace Enemies
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private SkinnedMeshRenderer meshRenderer;
         [SerializeField] private int damageToPlayer = 20;
+        [SerializeField] private CapsuleCollider capsuleCollider;
 
         public int cost;
         public Enemy enemyPrefab;
@@ -24,11 +26,12 @@ namespace Enemies
         [SerializeField] private AudioClip walkingSound;
 
         private Player _player;
-        private NavMeshAgent _enemy;
+        private NavMeshAgent _enemyNavMesh;
         private Transform _playerTransform;
         private Animator _anim;
         private bool _isAttacking;
         private bool _isWalking = true;
+        private bool _isDead;
         private int _damageToEnemy;
 
         private static readonly int Attack = Animator.StringToHash("Attack");
@@ -39,7 +42,7 @@ namespace Enemies
 
         private void Awake()
         {
-            _enemy = GetComponent<NavMeshAgent>();
+            _enemyNavMesh = GetComponent<NavMeshAgent>();
             _player = FindObjectOfType<Player>();
             _playerTransform = _player.transform;
             _anim = GetComponent<Animator>();
@@ -49,18 +52,18 @@ namespace Enemies
         {
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
-            _enemy.speed = Random.Range(1.5f, 2.8f);
+            _enemyNavMesh.speed = Random.Range(1.5f, 2.8f);
         }
 
         private void Update()
         {
-            _enemy.SetDestination(_playerTransform.position);
+            _enemyNavMesh.SetDestination(_playerTransform.position);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Player")) return;
-            _enemy.isStopped = true;
+            if (!other.CompareTag("Player") || _isDead) return;
+            _enemyNavMesh.isStopped = true;
             _isWalking = false;
             _isAttacking = true;
             _anim.SetInteger(AttackIndex, Random.Range(0, 7));
@@ -69,8 +72,8 @@ namespace Enemies
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.CompareTag("Player")) return;
-            _enemy.isStopped = false;
+            if (!other.CompareTag("Player") || _isDead) return;
+            _enemyNavMesh.isStopped = false;
             _isWalking = true;
             _isAttacking = false;
             _anim.SetTrigger(Walk);
@@ -79,13 +82,13 @@ namespace Enemies
         public void Hit(Arrow arrow)
         {
             DisableCollider(arrow);
+            if (_isDead) return;
             TakeDamage(arrow);
         }
 
         private void DisableCollider(Arrow arrow)
         {
-            if (arrow.TryGetComponent(out Collider collider))
-                collider.enabled = false;
+            Destroy(arrow.capsuleCollider);
         }
 
         private void TakeDamage(Arrow arrow)
@@ -106,13 +109,15 @@ namespace Enemies
 
         private void KillEnemy()
         {
-            _enemy.isStopped = true;
+            Destroy(capsuleCollider);
+            _enemyNavMesh.isStopped = true;
             _anim.SetInteger(DieIndex, Random.Range(0, 7));
             _anim.SetTrigger(Die);
             
             Sounds(dieSounds);
 
             meshRenderer.materials[0].DOFade(0, 5).OnComplete(() => Destroy(gameObject));
+            Destroy(_enemyNavMesh);
         }
 
         private void OnDestroy()

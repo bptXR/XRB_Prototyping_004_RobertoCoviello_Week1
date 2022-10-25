@@ -15,7 +15,9 @@ namespace BowArrow
         [SerializeField] private AudioClip[] hitEnemySounds;
         [SerializeField] private AudioClip[] hitGroundSounds;
         [SerializeField] private AudioSource audioSource;
-
+        
+        public CapsuleCollider capsuleCollider;
+        public Rigidbody rigidBody;
         public int damage = 50;
         public int damageToEnemy;
 

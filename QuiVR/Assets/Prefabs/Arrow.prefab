@@ -390,6 +390,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a58ec94b95087a6419664f4779d0a786, type: 3}
   - {fileID: 8300000, guid: aeaff8a7a49ebca4cb2add6b33419bee, type: 3}
   audioSource: {fileID: 34827071989859975}
+  capsuleCollider: {fileID: 961699093}
+  rigidBody: {fileID: 3544760493190169588}
   damage: 50
   damageToEnemy: 0
 --- !u!82 &34827071989859975

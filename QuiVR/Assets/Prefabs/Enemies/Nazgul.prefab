@@ -3830,6 +3830,7 @@ MonoBehaviour:
   healthBar: {fileID: 4501559281456911281}
   meshRenderer: {fileID: 2255934441126987403}
   damageToPlayer: 20
+  capsuleCollider: {fileID: 7116655920679161351}
   cost: 4
   enemyPrefab: {fileID: 2302787445133060162}
   audioSource: {fileID: 6755914529731360618}
