@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DG.Tweening;
 using Enemies;
 using UnityEngine;
@@ -13,6 +12,10 @@ namespace BowArrow
         [SerializeField] private Transform tip;
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private MeshRenderer meshRenderer;
+        [SerializeField] private AudioClip[] hitEnemySounds;
+        [SerializeField] private AudioClip[] hitGroundSounds;
+        [SerializeField] private AudioSource audioSource;
+
         public int damage = 50;
         public int damageToEnemy;
 
@@ -102,12 +105,31 @@ namespace BowArrow
         private void CheckForHittable(RaycastHit hit)
         {
             if (hit.transform.TryGetComponent(out Enemy hittable))
+            {
                 hittable.Hit(this);
+                HitEnemySounds();
+            }
+            else
+            {
+                HitGroundSounds();
+            }
         }
 
         public override bool IsSelectableBy(IXRSelectInteractor interactor)
         {
             return base.IsSelectableBy(interactor) && !_isFlying;
+        }
+
+        private void HitEnemySounds()
+        {
+            AudioClip clip = hitEnemySounds[Random.Range(0, hitEnemySounds.Length)];
+            audioSource.PlayOneShot(clip);
+        }
+
+        private void HitGroundSounds()
+        {
+            AudioClip clip = hitGroundSounds[Random.Range(0, hitGroundSounds.Length)];
+            audioSource.PlayOneShot(clip);
         }
     }
 }

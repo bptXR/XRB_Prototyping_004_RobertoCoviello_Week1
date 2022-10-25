@@ -209,6 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5832823175582339433}
   - component: {fileID: 7046829276956346025}
+  - component: {fileID: 34827071989859975}
   - component: {fileID: 3544760493190169588}
   - component: {fileID: 961699093}
   m_Layer: 2
@@ -366,8 +367,127 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3955
   meshRenderer: {fileID: 384999108649450282}
+  hitEnemySounds:
+  - {fileID: 8300000, guid: 3dba319411d7dc14b919dc648f761aa8, type: 3}
+  - {fileID: 8300000, guid: 4ccefcd8ca40a5f42af76aee58096bce, type: 3}
+  - {fileID: 8300000, guid: 465f5eb87fa385041be112e92c87bd61, type: 3}
+  - {fileID: 8300000, guid: 7147bcd980f8db84da3f06e873abacca, type: 3}
+  - {fileID: 8300000, guid: 49d5725c751f9c4408e8210ffbbbd1bc, type: 3}
+  - {fileID: 8300000, guid: 534ae2e44c742fb4886ede97d801bcf0, type: 3}
+  - {fileID: 8300000, guid: b32c345a6347e1341b00e5942f14b9cf, type: 3}
+  - {fileID: 8300000, guid: b9f3de07e1a1d9f489895bc598aa3635, type: 3}
+  - {fileID: 8300000, guid: a1642b119d215fc4994eb9c57bea75fb, type: 3}
+  - {fileID: 8300000, guid: 085c9938736c3044b991d2f565a6ffe3, type: 3}
+  hitGroundSounds:
+  - {fileID: 8300000, guid: 9672e267cf53da4448ae7ce711b18e43, type: 3}
+  - {fileID: 8300000, guid: 772aef3cc60e25140ae21c21110f0af1, type: 3}
+  - {fileID: 8300000, guid: dcc6443a0140f954bb9238e4211b23b6, type: 3}
+  - {fileID: 8300000, guid: abc4d3602d69a2647a08e75646b28d44, type: 3}
+  - {fileID: 8300000, guid: 676fb311142746c43b65a0c94eb553ed, type: 3}
+  - {fileID: 8300000, guid: c024adf3904aa1c449b0ff2b7fcb6a25, type: 3}
+  - {fileID: 8300000, guid: 5d77f0dde9867164a970e1e5e64f1cbc, type: 3}
+  - {fileID: 8300000, guid: 2572a0483a07b5342a89b0f0b99b84d1, type: 3}
+  - {fileID: 8300000, guid: a58ec94b95087a6419664f4779d0a786, type: 3}
+  - {fileID: 8300000, guid: aeaff8a7a49ebca4cb2add6b33419bee, type: 3}
+  audioSource: {fileID: 34827071989859975}
   damage: 50
   damageToEnemy: 0
+--- !u!82 &34827071989859975
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542102953145869890}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.55
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!54 &3544760493190169588
 Rigidbody:
   m_ObjectHideFlags: 0

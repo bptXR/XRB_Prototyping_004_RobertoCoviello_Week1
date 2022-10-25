@@ -25,7 +25,7 @@ namespace Enemies
         [SerializeField] private AudioClip gameSound;
         [SerializeField] private AudioClip wavePauseSound;
         [SerializeField] private AudioSource audioSource;
-        
+
         private void Start()
         {
             GenerateWave();
@@ -38,7 +38,8 @@ namespace Enemies
             {
                 if (_enemiesToSpawn.Count > 0)
                 {
-                    Enemy enemy = Instantiate(_enemiesToSpawn[0], spawnLocations[spawnIndex].position, Quaternion.identity);
+                    Enemy enemy = Instantiate(_enemiesToSpawn[0], spawnLocations[spawnIndex].position,
+                        Quaternion.identity);
                     _enemiesToSpawn.RemoveAt(0);
                     spawnedEnemies.Add(enemy);
                     _spawnTimer = _spawnInterval;
@@ -71,12 +72,12 @@ namespace Enemies
         public void GenerateWave()
         {
             StartCoroutine(Sounds());
-                
+
             _waveValue = currWave * spendAmount;
             GenerateEnemies();
-            
+
             _spawnInterval = waveDuration / _enemiesToSpawn.Count;
-            
+
             _waveTimer = waveDuration;
         }
 

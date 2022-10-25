@@ -13,7 +13,7 @@ namespace Enemies
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private SkinnedMeshRenderer meshRenderer;
         [SerializeField] private int damageToPlayer = 20;
-        
+
         public int cost;
         public Enemy enemyPrefab;
 
@@ -110,6 +110,8 @@ namespace Enemies
 
         public void DoDamage()
         {
+            AttackSounds();
+            
             if (!_isAttacking) return;
             int currentPlayerHealth = _player.currentHealth - damageToPlayer;
             _player.TakeDamage(currentPlayerHealth);
@@ -120,6 +122,12 @@ namespace Enemies
             if (GameObject.FindGameObjectWithTag("WaveSpawner") == null) return;
             GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>().spawnedEnemies
                 .Remove(enemyPrefab);
+        }
+        
+        private void AttackSounds()
+        {
+            AudioClip clip = attackSounds[Random.Range(0, attackSounds.Length)];
+            audioSource.PlayOneShot(clip);
         }
     }
 }
