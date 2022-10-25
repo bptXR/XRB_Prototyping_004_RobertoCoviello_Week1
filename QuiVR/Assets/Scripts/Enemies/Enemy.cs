@@ -42,7 +42,7 @@ namespace Enemies
         {
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
-            _enemy.speed = Random.Range(1.8f, 3.2f);
+            _enemy.speed = Random.Range(1.5f, 2.8f);
         }
 
         private void Update()
@@ -93,11 +93,11 @@ namespace Enemies
 
         private void KillEnemy()
         {
-            _enemy.isStopped = true;
+            //_enemy.isStopped = true;
             _anim.SetInteger(DieIndex, Random.Range(0, 7));
             _anim.SetTrigger(Die);
 
-            meshRenderer.materials[0].DOFade(0, 5).OnComplete(() => Destroy(gameObject));
+            meshRenderer.materials[0].DOFade(0, 5).SetDelay(1).OnComplete(() => Destroy(gameObject));
         }
 
         public void DoDamage()
@@ -109,7 +109,6 @@ namespace Enemies
 
         private void OnDestroy()
         {
-            print("Destroy");
             if (GameObject.FindGameObjectWithTag("WaveSpawner") == null) return;
             GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>().spawnedEnemies
                 .Remove(enemyPrefab);
