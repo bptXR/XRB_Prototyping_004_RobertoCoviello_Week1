@@ -3832,6 +3832,29 @@ MonoBehaviour:
   damageToPlayer: 20
   cost: 4
   enemyPrefab: {fileID: 2302787445133060162}
+  attackSounds:
+  - {fileID: 8300000, guid: a147eecc883da5746875c2a592953f49, type: 3}
+  - {fileID: 8300000, guid: 0789e20a524ccfa44bc2a36191bf588c, type: 3}
+  - {fileID: 8300000, guid: 02545c307d068de4599a955373aae459, type: 3}
+  - {fileID: 8300000, guid: 0c536ed909ee2d54983542be053e4884, type: 3}
+  - {fileID: 8300000, guid: d694ce4b10ce0054985fea2c070d3a77, type: 3}
+  gettingHitSounds:
+  - {fileID: 8300000, guid: 9b2621a2380cdb54b977ef54f3c50187, type: 3}
+  - {fileID: 8300000, guid: b41458c26458f914b987bf9123dea552, type: 3}
+  - {fileID: 8300000, guid: 394e0e7491aa2c44b8684f5675b6d2ea, type: 3}
+  - {fileID: 8300000, guid: 4928872aacfd63348a2ca935c42a3fd6, type: 3}
+  - {fileID: 8300000, guid: e5b957c1df028f141a5bb1f58e8a8cf8, type: 3}
+  - {fileID: 8300000, guid: 8ddc83c12b469a24aaaf13f0828c4f8e, type: 3}
+  spawnSounds:
+  - {fileID: 8300000, guid: d70f65e5f66fbaf4aabcec7065dec7fa, type: 3}
+  - {fileID: 8300000, guid: 1cb1b27d5a4938949ae413229df839d6, type: 3}
+  - {fileID: 8300000, guid: 60d70538a99fabf448c57ff339dcf3dd, type: 3}
+  - {fileID: 8300000, guid: 4b02d38aafc1a6a4cabe833a0ab6a60c, type: 3}
+  - {fileID: 8300000, guid: bb272ef19d82c9f40a053cc11934b9bb, type: 3}
+  dieSounds:
+  - {fileID: 8300000, guid: 20dae5237aef75440b2776f135b6aaf9, type: 3}
+  - {fileID: 8300000, guid: e0135a787239bd34da729978f4bafcec, type: 3}
+  walkingSound: {fileID: 8300000, guid: 91b540bd1ce7588499911829f62457c4, type: 3}
 --- !u!95 &2302787445133060191
 Animator:
   serializedVersion: 4

@@ -20,6 +20,7 @@ namespace Enemies
         [SerializeField] private AudioClip[] attackSounds;
         [SerializeField] private AudioClip[] gettingHitSounds;
         [SerializeField] private AudioClip[] spawnSounds;
+        [SerializeField] private AudioClip[] dieSounds;
         [SerializeField] private AudioClip walkingSound;
 
         private Player _player;

@@ -4788,6 +4788,37 @@ MonoBehaviour:
   damageToPlayer: 15
   cost: 2
   enemyPrefab: {fileID: 5496304218984111985}
+  attackSounds:
+  - {fileID: 8300000, guid: d4b4b080b5986f34baf07c44da8aaa0a, type: 3}
+  - {fileID: 8300000, guid: 6e4c1b1512a029f48b54d0ebee146a2c, type: 3}
+  - {fileID: 8300000, guid: e3fd597d50875e249bdbc8b5b8fcc7d1, type: 3}
+  - {fileID: 8300000, guid: e0740468e70343f4ab42797d22e78f40, type: 3}
+  - {fileID: 8300000, guid: 088cc074426381b428572f5e77b94cc6, type: 3}
+  - {fileID: 8300000, guid: e7375344e7b9b944a9331539c6f4d9a9, type: 3}
+  - {fileID: 8300000, guid: bab780f8d62709b47bea1a3b9c29d4e5, type: 3}
+  - {fileID: 8300000, guid: 64648452a31d1cb488b7f1794d8df130, type: 3}
+  - {fileID: 8300000, guid: 7dcbcf67ff1695b48bbe493f20fe8aac, type: 3}
+  - {fileID: 8300000, guid: cc713b3e21b32f3469aa2a6718e7ec90, type: 3}
+  gettingHitSounds:
+  - {fileID: 8300000, guid: 623e7bbb60471c64ebca9e527d765e93, type: 3}
+  - {fileID: 8300000, guid: 0190e6f88ff67e2439ca6ff02f7979a1, type: 3}
+  - {fileID: 8300000, guid: 61f3632ed8c9609408ea34f9a07308d3, type: 3}
+  - {fileID: 8300000, guid: d3b7c871df943ed42ac97f150393714d, type: 3}
+  - {fileID: 8300000, guid: 55853d988e97819449d3b9404a978562, type: 3}
+  - {fileID: 8300000, guid: 9a3b03f04eb8047418ea6403ce6a3163, type: 3}
+  spawnSounds:
+  - {fileID: 8300000, guid: 27334faefb0cd7f4aaf0590535e24f7e, type: 3}
+  - {fileID: 8300000, guid: 2d2a23b1d75bd79478d1feecf6257b7b, type: 3}
+  - {fileID: 8300000, guid: bb534801ed5b9d14d849af369587d712, type: 3}
+  - {fileID: 8300000, guid: 1655fe332c0924a418181e2c2902fa7b, type: 3}
+  - {fileID: 8300000, guid: c7642d95f49b36746bcfc325f8164838, type: 3}
+  - {fileID: 8300000, guid: 4e9a4da22e9184f42b28ad49464f6c35, type: 3}
+  - {fileID: 8300000, guid: 83e8252b8f3ff6d4d8bb550c28d3bc74, type: 3}
+  - {fileID: 8300000, guid: 0da9090fe6a130d468c2dfa968042e0b, type: 3}
+  dieSounds:
+  - {fileID: 8300000, guid: b61f1020659c36946b7a8ceb8df19358, type: 3}
+  - {fileID: 8300000, guid: 5737e8308750b0543b9ad1b2906f0a1a, type: 3}
+  walkingSound: {fileID: 8300000, guid: 91b540bd1ce7588499911829f62457c4, type: 3}
 --- !u!95 &5496304218984111980
 Animator:
   serializedVersion: 4
