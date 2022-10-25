@@ -109,9 +109,10 @@ namespace Enemies
 
         private void OnDestroy()
         {
+            print("Destroy");
             if (GameObject.FindGameObjectWithTag("WaveSpawner") == null) return;
             GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>().spawnedEnemies
-                .Remove(this);
+                .Remove(enemyPrefab);
         }
     }
 }

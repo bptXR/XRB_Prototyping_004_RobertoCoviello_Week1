@@ -10,6 +10,7 @@ namespace Enemies
         [SerializeField] private int waveDuration;
         [SerializeField] private Transform[] spawnLocations;
         [SerializeField] private int spawnIndex;
+        [SerializeField] private int spendAmount;
 
         private List<Enemy> _enemiesToSpawn = new();
         private int _waveValue;
@@ -29,12 +30,10 @@ namespace Enemies
         {
             if (_spawnTimer <= 0)
             {
-                //spawn an enemy
                 if (_enemiesToSpawn.Count > 0)
                 {
-                    Enemy enemy = Instantiate(_enemiesToSpawn[0], spawnLocations[spawnIndex].position,
-                        Quaternion.identity); // spawn first enemy in our list
-                    _enemiesToSpawn.RemoveAt(0); // and remove it
+                    Enemy enemy = Instantiate(_enemiesToSpawn[0], spawnLocations[spawnIndex].position, Quaternion.identity);
+                    _enemiesToSpawn.RemoveAt(0);
                     spawnedEnemies.Add(enemy);
                     _spawnTimer = _spawnInterval;
 
@@ -49,7 +48,7 @@ namespace Enemies
                 }
                 else
                 {
-                    _waveTimer = 0; // if no enemies remain, end wave
+                    _waveTimer = 0;
                 }
             }
             else
@@ -65,11 +64,11 @@ namespace Enemies
 
         public void GenerateWave()
         {
-            _waveValue = currWave * 10;
+            _waveValue = currWave * spendAmount;
             GenerateEnemies();
 
-            _spawnInterval = waveDuration / _enemiesToSpawn.Count; // gives a fixed time between each enemies
-            _waveTimer = waveDuration; // wave duration is read only
+            _spawnInterval = waveDuration / _enemiesToSpawn.Count;
+            _waveTimer = waveDuration;
         }
 
         private void GenerateEnemies()

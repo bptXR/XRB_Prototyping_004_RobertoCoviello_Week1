@@ -1549,7 +1549,7 @@ GameObject:
   - component: {fileID: 1152401627}
   m_Layer: 0
   m_Name: WaveSpawner
-  m_TagString: Untagged
+  m_TagString: WaveSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1573,7 +1573,6 @@ MonoBehaviour:
   - {fileID: 5543289863101976825, guid: b9833662758eb6a4d86af51a2062aa98, type: 3}
   - {fileID: 6415754418904724207, guid: 2cbaa2493e47bf34c88c8eaeb4efceac, type: 3}
   - {fileID: 2450931036535425998, guid: 62c34b328c411ca4ca304c7bf851f939, type: 3}
-  enemiesToSpawn: []
   currWave: 0
   waveDuration: 0
   spawnLocations:
@@ -1585,6 +1584,7 @@ MonoBehaviour:
   - {fileID: 1847647803}
   - {fileID: 1038865144}
   spawnIndex: 0
+  spendAmount: 7
   spawnedEnemies: []
 --- !u!4 &1152401628
 Transform:
@@ -5727,6 +5727,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381280188964863489, guid: 0649b70d50dfc4743ab4cd4c089b1258,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381280188964863489, guid: 0649b70d50dfc4743ab4cd4c089b1258,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381280188964863489, guid: 0649b70d50dfc4743ab4cd4c089b1258,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 76
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381280188964863489, guid: 0649b70d50dfc4743ab4cd4c089b1258,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -16.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381280189767284806, guid: 0649b70d50dfc4743ab4cd4c089b1258,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8381280189767284924, guid: 0649b70d50dfc4743ab4cd4c089b1258,
         type: 3}
