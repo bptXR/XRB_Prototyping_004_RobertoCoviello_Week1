@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,11 @@ namespace Enemies
 
         public List<Enemy> spawnedEnemies = new();
 
+        [SerializeField] private AudioClip[] waveStartSounds;
+        [SerializeField] private AudioClip gameSound;
+        [SerializeField] private AudioClip wavePauseSound;
+        [SerializeField] private AudioSource audioSource;
+        
         private void Start()
         {
             GenerateWave();
@@ -64,10 +70,13 @@ namespace Enemies
 
         public void GenerateWave()
         {
+            StartCoroutine(Sounds());
+                
             _waveValue = currWave * spendAmount;
             GenerateEnemies();
-
+            
             _spawnInterval = waveDuration / _enemiesToSpawn.Count;
+            
             _waveTimer = waveDuration;
         }
 
@@ -92,6 +101,14 @@ namespace Enemies
 
             _enemiesToSpawn.Clear();
             _enemiesToSpawn = generatedEnemies;
+        }
+
+        private IEnumerator Sounds()
+        {
+            AudioClip clip = waveStartSounds[Random.Range(0, waveStartSounds.Length)];
+            audioSource.PlayOneShot(clip);
+            yield return new WaitWhile(() => audioSource.isPlaying);
+            audioSource.PlayOneShot(gameSound);
         }
     }
 }

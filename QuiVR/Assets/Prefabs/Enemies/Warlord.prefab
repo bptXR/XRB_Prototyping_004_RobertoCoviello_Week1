@@ -203,7 +203,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1081,6 +1081,7 @@ MonoBehaviour:
   damageToPlayer: 40
   cost: 8
   enemyPrefab: {fileID: 2450931036535425998}
+  audioSource: {fileID: 2112397001535840722}
   attackSounds:
   - {fileID: 8300000, guid: 253abdbed5c73df4ebe3aa53c28531a2, type: 3}
   - {fileID: 8300000, guid: 11d787d8fba0bf74cab712341e6136fe, type: 3}

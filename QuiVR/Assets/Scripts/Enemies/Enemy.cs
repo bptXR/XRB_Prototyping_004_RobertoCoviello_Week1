@@ -17,6 +17,7 @@ namespace Enemies
         public int cost;
         public Enemy enemyPrefab;
 
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip[] attackSounds;
         [SerializeField] private AudioClip[] gettingHitSounds;
         [SerializeField] private AudioClip[] spawnSounds;
@@ -28,6 +29,7 @@ namespace Enemies
         private Transform _playerTransform;
         private Animator _anim;
         private bool _isAttacking;
+        private bool _isWalking;
         private int _damageToEnemy;
 
         private static readonly int Attack = Animator.StringToHash("Attack");
@@ -60,6 +62,7 @@ namespace Enemies
         {
             if (!other.CompareTag("Player")) return;
             _enemy.isStopped = true;
+            _isWalking = false;
             _isAttacking = true;
             _anim.SetInteger(AttackIndex, Random.Range(0, 7));
             _anim.SetTrigger(Attack);
@@ -69,6 +72,7 @@ namespace Enemies
         {
             if (!other.CompareTag("Player")) return;
             _enemy.isStopped = false;
+            _isWalking = true;
             _isAttacking = false;
             _anim.SetTrigger(Walk);
         }
