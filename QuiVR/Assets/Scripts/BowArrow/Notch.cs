@@ -48,8 +48,8 @@ namespace BowArrow
         {
             base.ProcessInteractor(updatePhase);
 
-            if (_bow.isSelected)
-                UpdatePull();
+            if (!_bow.isSelected) return;
+            UpdatePull();
         }
 
         private void UpdatePull()

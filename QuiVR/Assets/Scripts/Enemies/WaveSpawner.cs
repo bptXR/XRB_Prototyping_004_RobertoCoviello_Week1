@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Enemies
@@ -12,6 +13,7 @@ namespace Enemies
         [SerializeField] private Transform[] spawnLocations;
         [SerializeField] private int spawnIndex;
         [SerializeField] private int spendAmount;
+        [SerializeField] private TextMeshProUGUI wavesText;
 
         private List<Enemy> _enemiesToSpawn = new();
         private int _waveValue;
@@ -23,7 +25,6 @@ namespace Enemies
 
         [SerializeField] private AudioClip[] waveStartSounds;
         [SerializeField] private AudioClip gameSound;
-        [SerializeField] private AudioClip wavePauseSound;
         [SerializeField] private AudioSource audioSource;
 
         private void Start()
@@ -72,12 +73,12 @@ namespace Enemies
         public void GenerateWave()
         {
             StartCoroutine(Sounds());
-
             _waveValue = currWave * spendAmount;
             GenerateEnemies();
 
+            wavesText.SetText("Current Wave: " + currWave);
+            
             _spawnInterval = waveDuration / _enemiesToSpawn.Count;
-
             _waveTimer = waveDuration;
         }
 

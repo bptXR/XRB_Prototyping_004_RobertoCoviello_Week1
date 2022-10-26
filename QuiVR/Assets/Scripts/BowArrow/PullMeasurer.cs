@@ -11,6 +11,7 @@ namespace BowArrow
 
         public float PullAmount { get; private set; } = 0.0f;
         public float lastPullAmount;
+        private static readonly int EmissionIntensity = Shader.PropertyToID("_EmissionIntensity");
 
         public Vector3 PullPosition => Vector3.Lerp(start.position, end.position, PullAmount);
 
@@ -19,7 +20,7 @@ namespace BowArrow
             base.OnSelectExited(args);
             lastPullAmount = PullAmount;
             PullAmount = 0;
-            glowMaterial.SetFloat("_EmissionIntensity", 0);
+            glowMaterial.SetFloat(EmissionIntensity, 0);
         }
 
         public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -30,7 +31,7 @@ namespace BowArrow
             
             if (updatePhase != XRInteractionUpdateOrder.UpdatePhase.Dynamic) return;
             GetPullAmount();
-            glowMaterial.SetFloat("_EmissionIntensity", (PullAmount*5));
+            glowMaterial.SetFloat(EmissionIntensity, (PullAmount*5));
         }
 
         private void GetPullAmount()
@@ -41,8 +42,9 @@ namespace BowArrow
 
         private float CalculatePull(Vector3 handPosition)
         {
-            Vector3 pullDirection = handPosition - start.position;
-            Vector3 targetDirection = end.position - start.position;
+            Vector3 position = start.position;
+            Vector3 pullDirection = handPosition - position;
+            Vector3 targetDirection = end.position - position;
             float maxLength = targetDirection.magnitude;
 
             targetDirection.Normalize();
