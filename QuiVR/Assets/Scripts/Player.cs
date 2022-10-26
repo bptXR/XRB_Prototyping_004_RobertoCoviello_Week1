@@ -3,7 +3,6 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using Enemies;
-using TMPro;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -14,10 +13,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private TimerRestart timer;
+    
     [SerializeField] private Image gameOverImage;
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private Image[] gameOverImageSides;
+    //[SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject waveSpawner;
-    [SerializeField] private Image startFade;
 
     [SerializeField] private AudioClip[] getHitSounds;
     [SerializeField] private AudioClip dieSound;
@@ -25,16 +25,13 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
     private Enemy[] _enemies;
-    
+
     private void Awake()
     {
+        Time.timeScale = 1f;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-    }
-
-    private void Start()
-    {
-        startFade.DOFade(0, 5);
+        audioSource.enabled = true;
     }
 
     public void TakeDamage(int playerHealth)
@@ -58,8 +55,14 @@ public class Player : MonoBehaviour
         audioSource.PlayOneShot(dieSound);
         yield return new WaitWhile(() => audioSource.isPlaying);
         audioSource.PlayOneShot(gameOverSound);
-        timerText.DOFade(1, 5);
-        gameOverImage.DOFade(1, 5).OnComplete(() => timer.enabled = true);
+        Time.timeScale = 0.1f;
+        foreach (var side in gameOverImageSides)
+        {
+            side.DOFade(1, 1);
+        }
+        gameOverImage.DOFade(1, 1).OnComplete(() => timer.enabled = true);
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        audioSource.enabled = false;
     }
 
     private void Sounds(AudioClip[] clips)
