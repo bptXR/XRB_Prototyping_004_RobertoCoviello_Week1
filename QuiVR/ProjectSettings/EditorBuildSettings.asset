@@ -9,6 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/QuiVR.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 546b38bdc79a6db449aa89d3c5778850,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9dce483f45ebf9244a0307f13eb1fce0,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 38d3ae84bcd6bee408f10e4c779aacd6,
